@@ -1,0 +1,169 @@
+fileFormatVersion: 2
+guid: 44fb7320fb19d174ab159adff6a5be10
+timeCreated: 1438234827
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: borrachinhas
+    100002: borrachinhas01
+    100004: Group01
+    100006: Group02
+    100008: Line01
+    100010: Line02
+    100012: Object02
+    100014: Object03
+    100016: Object04
+    100018: Object05
+    100020: Object06
+    100022: Object07
+    100024: Object08
+    100026: Object09
+    100028: Object10
+    100030: Object11
+    100032: Object12
+    100034: Object13
+    100036: Object14
+    100038: Plane03
+    100040: //RootNode
+    100042: Sphere01
+    100044: Sphere02
+    100046: Sphere03
+    400000: borrachinhas
+    400002: borrachinhas01
+    400004: Group01
+    400006: Group02
+    400008: Line01
+    400010: Line02
+    400012: Object02
+    400014: Object03
+    400016: Object04
+    400018: Object05
+    400020: Object06
+    400022: Object07
+    400024: Object08
+    400026: Object09
+    400028: Object10
+    400030: Object11
+    400032: Object12
+    400034: Object13
+    400036: Object14
+    400038: Plane03
+    400040: //RootNode
+    400042: Sphere01
+    400044: Sphere02
+    400046: Sphere03
+    2300000: Object02
+    2300002: Object03
+    2300004: Object04
+    2300006: Object05
+    2300008: Object06
+    2300010: Object07
+    2300012: Object08
+    2300014: Object09
+    2300016: Object10
+    2300018: Object11
+    2300020: Object12
+    2300022: Object13
+    2300024: Object14
+    2300026: Plane03
+    2300028: Sphere01
+    2300030: Sphere02
+    2300032: Sphere03
+    3300000: Object02
+    3300002: Object03
+    3300004: Object04
+    3300006: Object05
+    3300008: Object06
+    3300010: Object07
+    3300012: Object08
+    3300014: Object09
+    3300016: Object10
+    3300018: Object11
+    3300020: Object12
+    3300022: Object13
+    3300024: Object14
+    3300026: Plane03
+    3300028: Sphere01
+    3300030: Sphere02
+    3300032: Sphere03
+    4300000: Object02
+    4300002: Plane03
+    4300004: Object10
+    4300006: Object09
+    4300008: Object11
+    4300010: Object12
+    4300012: Object13
+    4300014: Object14
+    4300016: Sphere01
+    4300018: Sphere02
+    4300020: Sphere03
+    4300022: Object08
+    4300024: Object06
+    4300026: Object07
+    4300028: Object03
+    4300030: Object04
+    4300032: Object05
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
