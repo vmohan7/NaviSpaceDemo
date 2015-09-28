@@ -18,8 +18,8 @@ Loading C:\Users\Vasanth\Desktop\NaviSpaceDemo\Builds\SpaceDemo_Data\Managed\Uni
 Platform assembly: C:\Users\Vasanth\Desktop\NaviSpaceDemo\Builds\SpaceDemo_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
 Loading C:\Users\Vasanth\Desktop\NaviSpaceDemo\Builds\SpaceDemo_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
 Platform assembly: C:\Users\Vasanth\Desktop\NaviSpaceDemo\Builds\SpaceDemo_Data\Managed\System.Core.dll (this message is harmless)
-- Completed reload, in  0.041 seconds
-desktop: 1920x1080 60Hz; virtual: 3840x1080 at 0,0
+- Completed reload, in  0.093 seconds
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
 <RI> Input initialized.
@@ -31,5 +31,11 @@ Platform assembly: C:\Users\Vasanth\Desktop\NaviSpaceDemo\Builds\SpaceDemo_Data\
 (Filename:  Line: 46)
 
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 77c -> priority: 1 
-  Thread -> id: 1f9c -> priority: 1 
+  Thread -> id: 19c0 -> priority: 1 
+  Thread -> id: a54 -> priority: 1 
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.075008 ms
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 900.
+Total: 0.335828 ms (FindLiveObjects: 0.047213 ms CreateObjectMapping: 0.030380 ms MarkObjects: 0.236475 ms  DeleteObjects: 0.020116 ms)
+
