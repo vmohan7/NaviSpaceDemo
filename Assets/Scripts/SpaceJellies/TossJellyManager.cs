@@ -99,7 +99,7 @@ public class TossJellyManager : MonoBehaviour {
 	/// <summary>
 	/// When the player taps for the first time, we save that location as the reference location in prevPos
 	/// </summary>
-	private void HandleOnTouchDown (int fingerID, Vector2 pos)
+	private void HandleOnTouchDown (int playerID, int fingerID, Vector2 pos)
 	{
 		prevPos = pos;
 	}
@@ -107,7 +107,7 @@ public class TossJellyManager : MonoBehaviour {
 	/// <summary>
 	/// When the player moves their finger, we move the slingshot to match pulling it back.
 	/// </summary>
-	private void MoveTarget(int fingerID, Vector2 pos){
+	private void MoveTarget(int playerID, int fingerID, Vector2 pos){
 		if (tossIsReady) { 
 			Vector2 dir = (pos - prevPos);
 			Vector3 dir3D = new Vector3 (dir.x, 0f, dir.y); //controlls XZ plane
@@ -121,7 +121,7 @@ public class TossJellyManager : MonoBehaviour {
 	/// <summary>
 	/// When the player releases we fire the jelly from its current position to the target
 	/// </summary>
-	private void HandleOnTouchUp (int fingerID, Vector2 pos)
+	private void HandleOnTouchUp (int playerID, int fingerID, Vector2 pos)
 	{
 		Vector3 dir = (slingshotCenter.transform.position - slingshotTarget.transform.position);
 		if (tossableJelly != null && tossIsReady && dir.magnitude > 0f) {

@@ -25,10 +25,24 @@ using System.Collections;
 ///  via the DeviceLocation static variable, which is the transform of
 ///  the game object this script is attached to. Supports only one device.
 /// </summary>
-public class NaviDeviceLocation : MonoBehaviour {
+public class NaviDevice : MonoBehaviour {
 
-	//The handle to check the transform of the device.
-	public static Transform DeviceLocation;
+	//variables used to reset player id for the device
+	[HideInInspector]
+	public float playerResetTimer = 0f;
+	[HideInInspector]
+	public int numFingersDown = 0;
+	[HideInInspector]
+	public bool playerSwitchEnabled = false;
+
+	//ID is set when prefab is created
+	[HideInInspector]
+	public int connectionID;
+	
+	[HideInInspector]
+	public int DeviceWidth;
+	[HideInInspector]
+	public int DeviceHeight; 
 
 	private float lastSynchronizationTime = 0f;
 	private float syncDelay = 0f;
@@ -38,20 +52,17 @@ public class NaviDeviceLocation : MonoBehaviour {
 	private Quaternion syncStartRotation = new Quaternion ();
 	private Quaternion syncEndRotation = new Quaternion ();
 
-	/// <summary>
-	/// First function that is called when scene is loading
-	/// </summary>
-	void Awake(){
-		if (DeviceLocation == null)
-			DeviceLocation = gameObject.transform;
-	}
+	[HideInInspector]
+	public Vector3 interpolatedAcceleration = Vector3.zero;
+	private Vector3 syncStartAccel = Vector3.zero;
+	private Vector3 syncEndAccel = Vector3.zero;
 
 	/// <summary>
 	/// Called after Gameobject is initalized. We start listening for pose data
 	/// </summary>
 	void Start () {
 		NaviConnectionSDK.OnPoseData += OnPoseData;
-		NaviConnectionSDK.OnDeviceDisconnected += OnDeviceDisconnect;
+		NaviConnectionSDK.OnAccelerationData += OnAccelerationData;
 		DontDestroyOnLoad (this.gameObject);
 	}
 
@@ -59,32 +70,36 @@ public class NaviDeviceLocation : MonoBehaviour {
 	/// Called when object is destroyed i.e. when game ends
 	/// </summary>
 	void OnDestroy(){
-		DeviceLocation = null;
 		NaviConnectionSDK.OnPoseData -= OnPoseData;
-		NaviConnectionSDK.OnDeviceDisconnected -= OnDeviceDisconnect;
+		NaviConnectionSDK.OnAccelerationData -= OnAccelerationData;
 	}
-
+	
 	/// <summary>
-	/// Callback for when Device disconnects, so we connect to new device location object
+	/// Calculates the difference in time between sycnhronizations based on acceleration data sent from the network
 	/// </summary>
-	private void OnDeviceDisconnect(){
-		Destroy (this.gameObject);
+	private void OnAccelerationData(int connectionID, Vector3 syncAccelData){
+		if (this.connectionID == connectionID) {
+			syncStartAccel = interpolatedAcceleration;
+			syncEndAccel = syncAccelData;
+		}
 	}
 
 	//TODO: add some sort of prediction using velocity
 	/// <summary>
 	/// Calculates the difference in time between sycnhronizations based on pose data sent from the network
 	/// </summary>
-	private void OnPoseData(Vector3 syncPosition, Quaternion syncRotation){
-		syncTime = 0f;
-		syncDelay = Time.time - lastSynchronizationTime;
-		lastSynchronizationTime = Time.time;
+	private void OnPoseData(int connectionID, Vector3 syncPosition, Quaternion syncRotation){
+		if (this.connectionID == connectionID) {
+			syncTime = 0f;
+			syncDelay = Time.time - lastSynchronizationTime;
+			lastSynchronizationTime = Time.time;
 		
-		syncStartPosition = transform.position;
-		syncEndPosition = syncPosition;
+			syncStartPosition = transform.position;
+			syncEndPosition = syncPosition;
 		
-		syncStartRotation = transform.rotation;
-		syncEndRotation = syncRotation;
+			syncStartRotation = transform.rotation;
+			syncEndRotation = syncRotation;
+		}
 
 	}
 
@@ -93,7 +108,18 @@ public class NaviDeviceLocation : MonoBehaviour {
 	/// </summary>
 	void Update() {
 		syncTime += Time.deltaTime;
+		interpolatedAcceleration = Vector3.Lerp(syncStartAccel, syncEndAccel, syncTime / syncDelay);
 		transform.position = Vector3.Lerp(syncStartPosition, syncEndPosition, syncTime / syncDelay);
 		transform.rotation = Quaternion.Slerp(syncStartRotation, syncEndRotation, syncTime / syncDelay);
+	}
+
+	/// <summary>
+	/// Stores the smart device's width and height to be accessed by the game
+	/// </summary>
+	/// <param name="width">The width of the smart device</param>
+	/// <param name="height">The height of the smart device</param>
+	public void SetServerScreenSize(int width, int height){
+		DeviceWidth = width;
+		DeviceHeight = height;
 	}
 }
